@@ -16,14 +16,16 @@ data class Bike(
 class BikeEntityCallback : BeforeConvertCallback<Bike> {
 
     override fun onBeforeConvert(aggregate: Bike): Bike {
-        return if (aggregate.id == null) {
-            aggregate.copy(
-                    id = UUID.randomUUID().toString(),
-                    colors = aggregate.colors
-                            .map {
-                                if(it.id == null) it.copy(id = UUID.randomUUID().toString()) else it
-                            }
-                            .toMutableSet())
-        } else aggregate
+        var workingCopy = aggregate
+        if(workingCopy.id == null) {
+            workingCopy = workingCopy.copy(id = UUID.randomUUID().toString())
+        }
+        if (workingCopy.colors.any{ it.id == null }) {
+            workingCopy = workingCopy.copy(colors = aggregate.colors
+                    .map {
+                        if(it.id == null) it.copy(id = UUID.randomUUID().toString()) else it
+                    }.toMutableSet())
+        }
+        return workingCopy
     }
 }
