@@ -1,0 +1,12 @@
+#spring:
+#  datasource:
+#    # docker run --name spring-data-jdbc-kotlin-test -e POSTGRES_USER=integrationtest -e POSTGRES_PASSWORD=password -e POSTGRES_DB=spring-data-jdbc-kotlin -p 5438:5432 -d postgres:11
+#    url: jdbc:postgresql://localhost:5438/spring-data-jdbc-kotlin
+#    username: integrationtest
+#    password: password
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc: DEBUG
