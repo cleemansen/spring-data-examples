@@ -35,9 +35,11 @@ internal class SimpleTest {
 
         // create
         val actual = bikeRepository.save(bike) // C
+//        println(actual)
         assertThat(actual.colors)
                 .`as`("It is recommended to use immutable entities in order to get out of trouble w/ hash-sets!")
                 .hasSize(2)
+        actual.colors.forEach{ assertThat(it.id).isNotNull() }
 
         // read
         val read = bikeRepository.findById(actual.id!!).get() // R
