@@ -1,8 +1,9 @@
-package example.springdata.jdbc.kotlin
+package example.springdata.jdbc.kotlin.entity.bike
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 
+// child of aggregation unit `bike`
 data class Color(
         @Id val id: String? = null,
         val bikeId: String? = null,

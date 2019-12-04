@@ -2,6 +2,7 @@ package example.springdata.jdbc.kotlin
 
 import org.springframework.context.ApplicationListener
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories
@@ -12,6 +13,7 @@ import java.util.*
 
 @Configuration
 @EnableJdbcRepositories
+@ComponentScan
 class DataJdbcConfiguration : AbstractJdbcConfiguration() {
 
     @Bean
